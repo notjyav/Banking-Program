@@ -1,15 +1,17 @@
 import java.util.Scanner;
 
 public class Main {
+
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] arg) {
 
-        Scanner scanner = new Scanner(System.in);
         double balance = 0;
 
         boolean isRunning = true;
         int choice;
 
-        while (isRunning){
+        while (isRunning) {
             System.out.println("***************");
             System.out.println("BANKING PROGRAM");
             System.out.println("***************");
@@ -22,9 +24,9 @@ public class Main {
             System.out.print("Enter your choice (1-4) ");
             choice = scanner.nextInt();
 
-            switch(choice){
+            switch (choice) {
                 case 1 -> showBalance(balance);
-                case 2 -> System.out.println("DEPOSIT");
+                case 2 -> balance += deposit();
                 case 3 -> System.out.println("WITHDRAW");
                 case 4 -> isRunning = false;
                 default -> System.out.println("INVALID CHOICE");
@@ -33,17 +35,30 @@ public class Main {
         }
 
 
-
-
-
-
-
-
         scanner.close();
     }
 
 
-    static void showBalance(double balance){
+    static void showBalance(double balance) {
+        System.out.println("***************");
         System.out.printf("$%.2f\n", balance);
     }
+    static double deposit() {
+
+        double amount;
+
+        System.out.println("Enter Deposit: ");
+        amount = scanner.nextDouble();
+
+        if (amount < 0) {
+            System.out.println("Amount can not be negative");
+            return 0;
+        }
+        else {
+            return amount;
+
+        }
+    }
+
+
 }
